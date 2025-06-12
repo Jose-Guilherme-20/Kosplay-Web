@@ -1,0 +1,35 @@
+:host {
+  display: block;
+  height: 100vh;
+  width: 100vw;
+}
+.container {
+  max-width: 1400px;
+  height: 100vh;
+  background-color: rgb(223, 194, 221);
+}
+.container-page {
+  width: 100%;
+  background-color: white;
+}
+.btn-login button {
+  padding: 3px;
+  margin: 3px;
+  width: 5rem;
+  border-radius: 5px;
+  background-color: rgb(223, 194, 221);
+  color: black;
+  font-weight: 500;
+}
+.container-form {
+  height: 50vh;
+}
+form div {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+.recover-password a {
+  text-decoration: none;
+  font-weight: 500;
+}

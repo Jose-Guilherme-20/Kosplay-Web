@@ -1,0 +1,27 @@
+<section
+  class="container d-flex flex-column align-items-center justify-content-center"
+>
+  <div class="container-page">
+    <div
+      class="container-form d-flex flex-column align-items-center justify-content-center"
+    >
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="email">Email</label>
+          <input id="email" formControlName="email" type="email" />
+        </div>
+        <div>
+          <label for="password">Senha</label>
+          <input id="password" formControlName="password" type="password" />
+        </div>
+        <span class="recover-password d-flex justify-content-end"
+          ><a href="#">Recuperar Senha</a></span
+        >
+        <div class="btn-login d-flex flex-row justify-content-around">
+          <button>Cadastrar</button>
+          <button type="submit">Entrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
