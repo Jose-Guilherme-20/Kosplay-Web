@@ -33,3 +33,29 @@ form div {
   text-decoration: none;
   font-weight: 500;
 }
+
+form input[type="email"],
+form input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+button {
+  background-color: #f8c4d9;
+  color: black;
+  border: none;
+  padding: 10px 25px;
+  font-size: 14px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: bold;
+  margin: 10px;
+}
+button:hover {
+  background-color: #f7a9c1;
+}
