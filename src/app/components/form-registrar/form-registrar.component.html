@@ -1,0 +1,43 @@
+<div class="register-container">
+  <div class="header-bar"></div>
+  <div class="form-box">
+    <img src="assets/logo.png" alt="Logo" class="logo" />
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <input
+        type="text"
+        placeholder="Nome completo"
+        formControlName="fullName"
+      />
+      <input type="email" placeholder="E-mail" formControlName="email" />
+      <input
+        type="date"
+        placeholder="Data de nascimento"
+        formControlName="birthDate"
+      />
+      <input type="tel" placeholder="Telefone" formControlName="phone" />
+      <input type="password" placeholder="Senha" formControlName="password" />
+      <input
+        type="password"
+        placeholder="Confirmar senha"
+        formControlName="confirmPassword"
+      />
+      <div
+        *ngIf="
+          registerForm.errors?.['passwordsMismatch'] &&
+          registerForm.get('confirmPassword')?.touched
+        "
+        style="color: red; font-size: 12px"
+      >
+        As senhas não coincidem.
+      </div>
+
+      <div class="terms">
+        <input type="checkbox" formControlName="acceptTerms" />
+        <label>Li e aceito os <a href="#">termos e condições</a></label>
+      </div>
+
+      <button type="submit">CADASTRAR</button>
+    </form>
+  </div>
+</div>
