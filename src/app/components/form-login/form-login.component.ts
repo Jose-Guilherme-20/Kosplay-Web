@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-login',
@@ -12,7 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class FormLoginComponent {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: [''],
@@ -27,5 +28,9 @@ export class FormLoginComponent {
         'Formulário inválido. Por favor, preencha todos os campos corretamente.'
       );
     }
+  }
+
+  RedirectToRegister(): void {
+    this.router.navigate(['/registrar']);
   }
 }
