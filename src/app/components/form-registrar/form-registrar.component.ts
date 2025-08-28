@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   Validators,
   ReactiveFormsModule,
   AbstractControl,
+  FormArray,
+  FormControl,
 } from '@angular/forms';
 
 @Component({
@@ -18,16 +20,19 @@ import {
 export class FormRegistrarComponent {
   registerForm: FormGroup;
 
+  @Output() formSubmit = new EventEmitter<any>();
+
   constructor(private fb: FormBuilder) {
     this.registerForm = this.fb.group(
       {
-        fullName: ['', Validators.required],
+        userName: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
         birthDate: ['', Validators.required],
         phone: ['', Validators.required],
         password: ['', Validators.required],
         confirmPassword: ['', Validators.required],
         acceptTerms: [false, Validators.requiredTrue],
+        rolesId: this.fb.array([], Validators.required),
       },
       { validators: this.passwordsMatchValidator }
     );
@@ -44,8 +49,27 @@ export class FormRegistrarComponent {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
-      // enviar os dados ao backend
+      this.formSubmit.emit(this.registerForm.value);
+    }
+  }
+
+  roles = [
+    { id: 1, name: 'Alugar' },
+    { id: 2, name: 'Vendedor' },
+  ]; // exemplo
+
+  get rolesArray() {
+    return this.registerForm.get('rolesId') as FormArray;
+  }
+
+  onRoleChange(event: any, index: number) {
+    if (event.target.checked) {
+      this.rolesArray.push(new FormControl(this.roles[index].id));
+    } else {
+      const i = this.rolesArray.controls.findIndex(
+        (x) => x.value === this.roles[index].id
+      );
+      this.rolesArray.removeAt(i);
     }
   }
 }

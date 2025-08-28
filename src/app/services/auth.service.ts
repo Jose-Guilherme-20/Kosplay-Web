@@ -3,6 +3,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs';
+import { environment } from '../../enviroments/environment';
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root',
@@ -13,12 +15,14 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   login(username: string, password: string) {
-    return this.http.post<any>('/api/login', { username, password }).pipe(
-      tap((tokens: { accessToken: string; refreshToken: string }) => {
-        sessionStorage.setItem('access_token', tokens.accessToken);
-        sessionStorage.setItem('refresh_token', tokens.refreshToken);
-      })
-    );
+    return this.http
+      .post<any>(`${environment.apiUrl}/api/Auth/login`, { username, password })
+      .pipe(
+        tap((tokens: { accessToken: string; refreshToken: string }) => {
+          sessionStorage.setItem('access_token', tokens.accessToken);
+          sessionStorage.setItem('refresh_token', tokens.refreshToken);
+        })
+      );
   }
 
   isLoggedIn(): boolean {
@@ -35,17 +39,25 @@ export class AuthService {
       this.logout();
       return;
     }
-    return this.http.post<any>('/api/refresh-token', { refreshToken }).pipe(
-      tap((tokens) => {
-        sessionStorage.setItem('access_token', tokens.accessToken);
-        sessionStorage.setItem('refresh_token', tokens.refreshToken);
+    return this.http
+      .post<any>(`${environment.apiUrl}/api/Auth/refresh-token`, {
+        refreshToken,
       })
-    );
+      .pipe(
+        tap((tokens) => {
+          sessionStorage.setItem('access_token', tokens.accessToken);
+          sessionStorage.setItem('refresh_token', tokens.refreshToken);
+        })
+      );
   }
 
   logout() {
     sessionStorage.removeItem('access_token');
     sessionStorage.removeItem('refresh_token');
     this.router.navigate(['/login']);
+  }
+
+  register(user: User) {
+    return this.http.post<any>(`${environment.apiUrl}/api/Auth/register`, user);
   }
 }

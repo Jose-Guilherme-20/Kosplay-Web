@@ -7,7 +7,7 @@
       <input
         type="text"
         placeholder="Nome completo"
-        formControlName="fullName"
+        formControlName="userName"
       />
       <input type="email" placeholder="E-mail" formControlName="email" />
       <input
@@ -30,6 +30,17 @@
         style="color: red; font-size: 12px"
       >
         As senhas não coincidem.
+      </div>
+
+      <div formArrayName="rolesId">
+        <label *ngFor="let role of roles; let i = index">
+          <input
+            type="checkbox"
+            [value]="role.id"
+            (change)="onRoleChange($event, i)"
+          />
+          {{ role.name }}
+        </label>
       </div>
 
       <div class="terms">
