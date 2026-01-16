@@ -9,11 +9,25 @@ import {
   FormArray,
   FormControl,
 } from '@angular/forms';
-
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 @Component({
   selector: 'app-form-registrar',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  providers: [provideNativeDateAdapter()],
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatRadioModule,
+    MatCheckboxModule,
+  ],
   templateUrl: './form-registrar.component.html',
   styleUrl: './form-registrar.component.css',
 })
