@@ -11,15 +11,20 @@
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <mat-form-field>
         <mat-label>Nome completo</mat-label>
-        <input matInput formControlName="userName" />
+        <input matInput formControlName="userName" placeholder="nomeCompleto" />
       </mat-form-field>
       <mat-form-field>
         <mat-label>E-mail</mat-label>
-        <input matInput type="email" formControlName="email" />
+        <input
+          matInput
+          type="email"
+          formControlName="email"
+          placeholder="email"
+        />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Data de nascimento</mat-label>
-        <input matInput [matDatepicker]="picker" />
+        <input matInput [matDatepicker]="picker" placeholder="dataNascimento" />
         <mat-datepicker-toggle
           matIconSuffix
           [for]="picker"
@@ -28,15 +33,30 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Telefone</mat-label>
-        <input matInput type="tel" formControlName="phone" />
+        <input
+          matInput
+          type="tel"
+          formControlName="phone"
+          placeholder="telefone"
+        />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Senha</mat-label>
-        <input matInput type="password" formControlName="password" />
+        <input
+          matInput
+          type="password"
+          formControlName="password"
+          placeholder="senha"
+        />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Confirmar senha</mat-label>
-        <input matInput type="password" formControlName="confirmPassword" />
+        <input
+          matInput
+          type="password"
+          formControlName="confirmPassword"
+          placeholder="confirmarSenha"
+        />
       </mat-form-field>
       <div
         *ngIf="
@@ -48,17 +68,17 @@
         As senhas não coincidem.
       </div>
 
-      <div formArrayName="rolesId">
+      <mat-radio-group
+        formControlName="rolesId"
+        style="display: flex; gap: 24px; flex-direction: column"
+      >
         <label class="perfil-text">Selecione seu perfil</label>
-        <mat-radio-group
-          [formControlName]="'rolesId'"
-          style="display: flex; gap: 24px"
-        >
-          <mat-radio-button *ngFor="let role of roles" [value]="role.id">{{
-            role.name
-          }}</mat-radio-button>
-        </mat-radio-group>
-      </div>
+        <div style="display: flex; gap: 24px">
+          <mat-radio-button *ngFor="let role of roles" [value]="role.id">
+            {{ role.name }}
+          </mat-radio-button>
+        </div>
+      </mat-radio-group>
       <div class="terms">
         <mat-checkbox formControlName="acceptTerms"
           >Li e aceito os <a href="#">termos e condições</a></mat-checkbox

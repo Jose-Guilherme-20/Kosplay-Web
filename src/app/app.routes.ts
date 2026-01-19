@@ -3,6 +3,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistrarComponent } from './pages/registrar/registrar.component';
 import { AuthGuard } from './services/guards/AuthGuard';
 import { HomeComponent } from './pages/home/home.component';
+import { RolesResolver } from './services/guards/RolesResolver';
 
 export const routes: Routes = [
   {
@@ -17,6 +18,7 @@ export const routes: Routes = [
   {
     path: 'registrar',
     component: RegistrarComponent,
+    resolve: { roles: RolesResolver },
   },
   {
     path: '**',

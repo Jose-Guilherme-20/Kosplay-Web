@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -16,6 +16,9 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import { ActivatedRoute } from '@angular/router';
+import { Role } from '../../services/roles.service';
+
 @Component({
   selector: 'app-form-registrar',
   standalone: true,
@@ -33,12 +36,16 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './form-registrar.component.html',
   styleUrl: './form-registrar.component.css',
 })
-export class FormRegistrarComponent {
+export class FormRegistrarComponent implements OnInit {
   registerForm: FormGroup;
+  roles: Role[] = [];
 
   @Output() formSubmit = new EventEmitter<any>();
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+  ) {
     this.registerForm = this.fb.group(
       {
         userName: ['', Validators.required],
@@ -48,10 +55,17 @@ export class FormRegistrarComponent {
         password: ['', Validators.required],
         confirmPassword: ['', Validators.required],
         acceptTerms: [false, Validators.requiredTrue],
-        rolesId: this.fb.array([], Validators.required),
+        rolesId: ['', Validators.required],
       },
       { validators: this.passwordsMatchValidator },
     );
+  }
+
+  ngOnInit(): void {
+    // Recupera as roles resolvidas do resolver
+    this.route.data.subscribe((data) => {
+      this.roles = data['roles'] || [];
+    });
   }
 
   passwordsMatchValidator(
@@ -66,26 +80,6 @@ export class FormRegistrarComponent {
   onSubmit() {
     if (this.registerForm.valid) {
       this.formSubmit.emit(this.registerForm.value);
-    }
-  }
-
-  roles = [
-    { id: 1, name: 'Alugar' },
-    { id: 2, name: 'Vendedor' },
-  ]; // exemplo
-
-  get rolesArray() {
-    return this.registerForm.get('rolesId') as FormArray;
-  }
-
-  onRoleChange(event: any, index: number) {
-    if (event.target.checked) {
-      this.rolesArray.push(new FormControl(this.roles[index].id));
-    } else {
-      const i = this.rolesArray.controls.findIndex(
-        (x) => x.value === this.roles[index].id,
-      );
-      this.rolesArray.removeAt(i);
     }
   }
 }
