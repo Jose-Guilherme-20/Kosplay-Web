@@ -5,10 +5,10 @@
       src="logo-kosplay.png"
       alt="Kosplay logo: black play button symbol on pink square background with KOSPLAY text below"
       class="logo"
-      style="width: 150px; height: 150px; border: 0"
+      style="width: 200px; height: 200px; border: 0"
     />
 
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <mat-form-field>
         <mat-label>Nome completo</mat-label>
         <input matInput formControlName="userName" placeholder="nomeCompleto" />

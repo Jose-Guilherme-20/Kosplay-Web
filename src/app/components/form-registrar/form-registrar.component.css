@@ -30,7 +30,7 @@ html {
   padding: 30px 40px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 320px;
+  width: 380px;
 }
 
 /* Logo */
@@ -39,19 +39,6 @@ html {
   margin-bottom: 20px;
 }
 
-/* Inputs */
-/* form input[type="text"],
-form input[type="email"],
-form input[type="date"],
-form input[type="tel"],
-form input[type="password"] {
-  width: 100%;
-  padding: 10px 12px;
-  margin: 8px 0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
-} */
 .perfil-text {
   display: block;
   margin-bottom: 6px;
@@ -173,4 +160,9 @@ mat-form-field {
 
 button:hover {
   background-color: #f7a9c1;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  border-radius: 10px !important;
+  border: 0.5px solid rgb(223, 140, 178);
 }
