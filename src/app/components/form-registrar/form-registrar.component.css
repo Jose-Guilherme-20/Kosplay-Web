@@ -73,6 +73,11 @@ mat-form-field {
   background-color: rgba(248, 196, 217, 0.8) !important;
 }
 
+/* Remove a linha (mdc-line-ripple) dos inputs */
+::ng-deep .mdc-line-ripple {
+  display: none !important;
+}
+
 ::ng-deep
   .mat-mdc-text-field-wrapper
   .mdc-text-field--filled

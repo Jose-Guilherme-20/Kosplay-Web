@@ -11,7 +11,11 @@
     <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <mat-form-field>
         <mat-label>Nome completo</mat-label>
-        <input matInput formControlName="userName" placeholder="nomeCompleto" />
+        <input
+          matInput
+          formControlName="userName"
+          placeholder="Nome completo"
+        />
       </mat-form-field>
       <mat-form-field>
         <mat-label>E-mail</mat-label>
@@ -24,7 +28,11 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Data de nascimento</mat-label>
-        <input matInput [matDatepicker]="picker" placeholder="dataNascimento" />
+        <input
+          matInput
+          [matDatepicker]="picker"
+          placeholder="Data de nascimento"
+        />
         <mat-datepicker-toggle
           matIconSuffix
           [for]="picker"
@@ -37,7 +45,7 @@
           matInput
           type="tel"
           formControlName="phone"
-          placeholder="telefone"
+          placeholder="Telefone"
         />
       </mat-form-field>
       <mat-form-field>
@@ -46,7 +54,7 @@
           matInput
           type="password"
           formControlName="password"
-          placeholder="senha"
+          placeholder="Senha"
         />
       </mat-form-field>
       <mat-form-field>
@@ -55,7 +63,7 @@
           matInput
           type="password"
           formControlName="confirmPassword"
-          placeholder="confirmarSenha"
+          placeholder="Confirmar senha"
         />
       </mat-form-field>
       <div
@@ -70,7 +78,12 @@
 
       <mat-radio-group
         formControlName="rolesId"
-        style="display: flex; gap: 24px; flex-direction: column"
+        style="
+          display: flex;
+          gap: 24px;
+          flex-direction: column;
+          align-items: center;
+        "
       >
         <label class="perfil-text">Selecione seu perfil</label>
         <div style="display: flex; gap: 24px">
