@@ -1,68 +1,65 @@
 <div class="header">
-  <mat-toolbar class="top-bar">
-    <div class="top-left">
-      <button mat-button>Anuncie seu cosplay</button>
-      <button mat-button>Baixe o app</button>
-      <button mat-button>Siga a Kosplay</button>
+  <div class="header-container">
+    <div class="left">
+      <div class="logo">
+        <img src="logo-kosplay.png" alt="Kosplay" />
+        <div class="logo-text">
+          <span>ALUGUEL DE COSPLAYS</span>
+          <span> E ITENS DE COMPOSIÇÃO</span>
+        </div>
+      </div>
     </div>
+    <div class="right">
+      <mat-toolbar class="top-bar">
+        <div class="top-left">
+          <button mat-button>Anuncie seu cosplay</button>
+          <button mat-button>Baixe o app</button>
+          <button mat-button>Siga a Kosplay</button>
+        </div>
 
-    <div class="top-right">
-      <button mat-button>Cadastrar</button>
-      <button mat-stroked-button color="primary">Entrar</button>
+        <div class="top-right">
+          <button mat-button>Cadastrar</button>
+          <button mat-stroked-button color="primary">Entrar</button>
+        </div>
+      </mat-toolbar>
+
+      <!-- HEADER PRINCIPAL -->
+      <mat-toolbar class="main-header">
+        <div class="search">
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Busque no site..." />
+            <button mat-icon-button matSuffix>
+              <mat-icon>search</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+
+        <div class="header-actions">
+          <button mat-icon-button>
+            <mat-icon>favorite</mat-icon>
+          </button>
+          <button mat-icon-button>
+            <mat-icon>shopping_cart</mat-icon>
+          </button>
+        </div>
+      </mat-toolbar>
+
+      <!-- BANNER PARCERIAS / PROMOÇÕES -->
+      <div class="partner-banner">
+        <swiper-container
+          slides-per-view="1"
+          loop="true"
+          autoplay-delay="4000"
+          navigation="false"
+          pagination="false"
+          pagination-clickable="false"
+          class="partner-swiper"
+        >
+          <swiper-slide *ngFor="let banner of banners">
+            <img [src]="banner" alt="Parcerias e promoções" />
+          </swiper-slide>
+        </swiper-container>
+      </div>
     </div>
-  </mat-toolbar>
-
-  <!-- HEADER PRINCIPAL -->
-  <mat-toolbar class="main-header">
-    <div class="logo">
-      <img
-        src="logo-kosplay.png"
-        alt="Kosplay"
-        style="width: 150px; height: auto"
-      />
-    </div>
-
-    <div class="search">
-      <mat-form-field appearance="outline">
-        <input matInput placeholder="Busque no site..." />
-        <button mat-icon-button matSuffix>
-          <mat-icon>search</mat-icon>
-        </button>
-      </mat-form-field>
-    </div>
-
-    <div class="header-actions">
-      <button mat-icon-button>
-        <mat-icon>favorite</mat-icon>
-      </button>
-      <button mat-icon-button>
-        <mat-icon>shopping_cart</mat-icon>
-      </button>
-    </div>
-  </mat-toolbar>
-
-  <!-- BANNER PARCERIAS / PROMOÇÕES -->
-  <div class="partner-banner">
-    <swiper-container
-      slides-per-view="1"
-      loop="true"
-      autoplay-delay="5000"
-      navigation="true"
-      pagination="true"
-      pagination-clickable="true"
-      class="partner-swiper"
-    >
-      <swiper-slide *ngFor="let banner of banners">
-        <img [src]="banner" alt="Parcerias e promoções" />
-      </swiper-slide>
-    </swiper-container>
   </div>
-
-  <!-- MENU -->
-  <mat-toolbar class="menu-bar">
-    <button mat-button>Categorias</button>
-    <button mat-button>Populares</button>
-    <button mat-button>Promoções</button>
-    <button mat-button>Parcerias</button>
-  </mat-toolbar>
 </div>
