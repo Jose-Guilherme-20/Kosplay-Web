@@ -26,4 +26,10 @@ export class HeaderComponent {
     'assets/banners/banner-parceria-01.jpg',
     'assets/banners/banner-parceria-02.jpg',
   ];
+
+  menuOpen = false;
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 }

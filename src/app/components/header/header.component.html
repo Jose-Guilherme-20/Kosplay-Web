@@ -5,11 +5,13 @@
         <img src="logo-kosplay.png" alt="Kosplay" />
         <div class="logo-text">
           <span>ALUGUEL DE COSPLAYS</span>
-          <span> E ITENS DE COMPOSIÇÃO</span>
+          <span>E ITENS DE COMPOSIÇÃO</span>
         </div>
       </div>
     </div>
+
     <div class="right">
+      <!-- TOP BAR (DESKTOP) -->
       <mat-toolbar class="top-bar">
         <div class="top-left">
           <button mat-button>Anuncie seu cosplay</button>
@@ -25,6 +27,7 @@
 
       <!-- HEADER PRINCIPAL -->
       <mat-toolbar class="main-header">
+        <!-- SEARCH -->
         <div class="search">
           <mat-form-field appearance="outline">
             <input matInput placeholder="Busque no site..." />
@@ -34,6 +37,12 @@
           </mat-form-field>
         </div>
 
+        <!-- MENU HAMBURGUER (ÚNICO, LADO DIREITO) -->
+        <button mat-icon-button class="menu-button" (click)="toggleMenu()">
+          <mat-icon>menu</mat-icon>
+        </button>
+
+        <!-- AÇÕES (DESKTOP) -->
         <div class="header-actions">
           <button mat-icon-button>
             <mat-icon>favorite</mat-icon>
@@ -43,6 +52,22 @@
           </button>
         </div>
       </mat-toolbar>
+
+      <!-- MENU MOBILE -->
+      <div class="mobile-menu" [class.open]="menuOpen">
+        <button mat-icon-button class="close-menu" (click)="toggleMenu()">
+          <mat-icon>close</mat-icon>
+        </button>
+
+        <a>Anuncie seu cosplay</a>
+        <a>Baixe o app</a>
+        <a>Siga a Kosplay</a>
+
+        <hr />
+
+        <a>Cadastrar</a>
+        <a class="login">Entrar</a>
+      </div>
 
       <!-- BANNER PARCERIAS / PROMOÇÕES -->
       <div class="partner-banner">
