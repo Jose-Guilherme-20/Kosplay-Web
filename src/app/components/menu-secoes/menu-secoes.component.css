@@ -1,0 +1,79 @@
+/* =========================
+   CONTAINER GERAL
+========================= */
+.menu-secoes {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* =========================
+   LISTA DE TABS
+========================= */
+.menu-tabs {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+/* =========================
+   BOTÃO DA TAB
+========================= */
+.menu-tabs .tab-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background 0.2s ease;
+}
+
+.menu-tabs .tab-button:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* TAB ATIVA */
+.menu-tabs .tab-button.active {
+  border-bottom: 2px solid #f7c6d0;
+}
+
+/* =========================
+   CONTEÚDO DA TAB
+========================= */
+.tab-content {
+  padding: 16px 20px;
+  margin-bottom: 8px;
+  background-color: #ffffff;
+  border-left: 3px solid #f7c6d0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* =========================
+   ÍCONES
+========================= */
+.menu-tabs mat-icon {
+  font-size: 22px;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+@media (max-width: 768px) {
+  .menu-tabs .tab-button {
+    font-size: 16px;
+    padding: 12px 14px;
+  }
+
+  .tab-content {
+    padding: 14px;
+  }
+}

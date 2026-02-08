@@ -1,0 +1,67 @@
+<div class="menu-secoes">
+  <nav class="menu-tabs">
+    <!-- CATEGORIAS -->
+    <div class="tab-menu">
+      <button
+        class="tab-button"
+        (click)="setTab('categorias')"
+        [class.active]="activeTab === 'categorias'"
+      >
+        <mat-icon>menu</mat-icon>
+        Categorias
+      </button>
+
+      <section class="tab-content" *ngIf="activeTab === 'categorias'">
+        Conteúdo de categorias
+      </section>
+    </div>
+
+    <!-- POPULARES -->
+    <div class="tab-menu">
+      <button
+        class="tab-button"
+        (click)="setTab('populares')"
+        [class.active]="activeTab === 'populares'"
+      >
+        <mat-icon>local_fire_department</mat-icon>
+        Populares
+      </button>
+
+      <section class="tab-content" *ngIf="activeTab === 'populares'">
+        Conteúdo populares
+      </section>
+    </div>
+
+    <!-- PROMOÇÃO -->
+    <div class="tab-menu">
+      <button
+        class="tab-button"
+        (click)="setTab('promocao')"
+        [class.active]="activeTab === 'promocao'"
+      >
+        <mat-icon>local_offer</mat-icon>
+        Promoção
+      </button>
+
+      <section class="tab-content" *ngIf="activeTab === 'promocao'">
+        Conteúdo promoção
+      </section>
+    </div>
+
+    <!-- PARCERIAS -->
+    <div class="tab-menu">
+      <button
+        class="tab-button"
+        (click)="setTab('parcerias')"
+        [class.active]="activeTab === 'parcerias'"
+      >
+        <mat-icon>handshake</mat-icon>
+        Parcerias
+      </button>
+
+      <section class="tab-content" *ngIf="activeTab === 'parcerias'">
+        Conteúdo parcerias
+      </section>
+    </div>
+  </nav>
+</div>
